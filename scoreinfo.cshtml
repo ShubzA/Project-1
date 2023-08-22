@@ -1,0 +1,45 @@
+﻿@model demopopway.Models.Exam__Score
+@{
+    ViewBag.Title = "scoreinfo";
+}
+<style>
+
+    .error {
+        color:red;
+    }
+</style>
+<br />
+<br />
+<br />
+<a href="@Url.Action("GetScore","Exam")"><i class="btn btn-success">View Result </i></a>
+<br />
+<br />
+
+@using (Html.BeginForm("AddScore", "Exam", FormMethod.Post))
+{
+    <div class="container">
+        @Html.HiddenFor(x => x.id)
+        <div class="form-group">
+
+            <lable><b>Subject :</b></lable>
+            <br />
+            @Html.ValidationMessageFor(x => x.subject, "", new { @class = "error" })
+            @Html.DropDownListFor(x => x.subject, new SelectList(new String[] { "Marathi", "English", "Math", "Science" }))
+
+            @*@Html.TextBoxFor(x => x.Subjetct, new { @class = "form-control" })*@
+        </div>
+        <div class="form-group">
+            <lable><b>Score : </b></lable>
+            @Html.ValidationMessageFor(x => x.score, "", new { @class = "error" })
+            @Html.TextBoxFor(x => x.score, new { @class = "form-control" })
+        </div>
+        <div class="form-group">
+            <lable><b>Student: </b></lable>
+            @Html.ValidationMessageFor(x => x.student_id, "", new { @class = "error" })
+            @Html.TextBoxFor(x => x.student_id, new { @class = "form-control" })
+        </div>
+
+
+        <button class="btn btn-primary" type="submit">Save</button>
+    </div>
+}

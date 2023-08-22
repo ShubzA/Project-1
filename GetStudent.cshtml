@@ -1,0 +1,39 @@
+﻿@model List<demopopway.Models.Student>
+@{
+    ViewBag.Title = "GetStudent";
+}
+
+
+<br />
+
+<br />
+<br />
+     <a href="@Url.Action("StudentInfo","Student")"><i class="btn btn-success">Add New Student </i></a> 
+<br />
+<br />
+
+<table class="table table-hover">
+    <tr>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Number</th>
+        <th>Address</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Student_Name</td>
+            <td>@item.Student_Age</td>
+            <td>@item.Contact_Number</td>
+            <td>@item.Address</td>
+            <td>
+                <a href="@Url.Action("StudentInfo",new { item.ID,item.Student_Name,item.Student_Age,item.Contact_Number,item.Address})"><i class="btn btn-success">Edit </i></a>
+                <a href="@Url.Action("Delete",new { @item.ID})"><i class="btn btn-danger">Delete </i></a>
+            </td>
+
+        </tr>
+    }
+</table>
+
+

@@ -1,0 +1,35 @@
+﻿@model List<demopopway.Models.Exam__Score>
+<br />
+<br />
+<br />
+<a href="@Url.Action("scoreinfo","Exam")"><i class="btn btn-success">New Entry</i></a>
+<br />
+<br />
+<table class="table table-responsive">
+    <tr>
+        <th>
+            Subject
+        </th>
+        <th>
+            Score
+        </th>
+        <th>
+            Student_Name
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.subject</td>
+            <td>@item.score</td>
+            <td>@item.Student.Student_Name</td>
+            <td>
+                <a href="@Url.Action("scoreinfo",new { item.id,item.subject,item.score,item.student_id })"><i class="btn btn-success">Edit </i></a>
+                <a href="@Url.Action("Delete",new { item.id})"><i class="btn btn-danger">Delete </i></a>
+            </td>
+
+        </tr>
+    }
+
+</table>
